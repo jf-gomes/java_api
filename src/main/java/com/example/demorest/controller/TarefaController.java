@@ -15,6 +15,7 @@ import com.example.demorest.repository.TarefaRepository;
 
 @RestController
 @RequestMapping({ "/tarefas" })
+
 public class TarefaController {
 
     private final TarefaRepository repository;
@@ -45,7 +46,7 @@ public class TarefaController {
         return repository.findById(id)
                 .map(record -> {
                     record.setNome(tarefa.getNome());
-                    record.setData(tarefa.getData());
+                    record.setDataEntrega(tarefa.getDataEntrega());
                     record.setResponsavel(tarefa.getResponsavel());
                     Tarefa updated = repository.save(record);
                     return ResponseEntity.ok().body(updated);
